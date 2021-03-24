@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">Proyecto1</string>
+    <string name="title_activity_notas">MainActivity</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
+    <string name="title_notas">notas</string>
+    <string name="title_favoritas">favoritas</string>
+    <string name="title_user_profile">miperfil</string>
+</resources>
