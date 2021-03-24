@@ -7,20 +7,20 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.example.proyecto1.dummy.DummyContent.DummyItem;
-
 import java.util.List;
 
 /**
- * {@link RecyclerView.Adapter} that can display a {@link DummyItem}.
+ * {@link RecyclerView.Adapter} that can display a {@link }.
  * TODO: Replace the implementation with code for your data type.
  */
 public class MyNotaRecyclerViewAdapter extends RecyclerView.Adapter<MyNotaRecyclerViewAdapter.ViewHolder> {
 
-    private final List<DummyItem> mValues;
+    private final List<Nota> mValues;
+    private final NotasInteractionListener mListener;
 
-    public MyNotaRecyclerViewAdapter(List<DummyItem> items) {
+    public MyNotaRecyclerViewAdapter(List<Nota> items, NotasInteractionListener listener) {
         mValues = items;
+        mListener = listener;
     }
 
     @Override
@@ -39,14 +39,14 @@ public class MyNotaRecyclerViewAdapter extends RecyclerView.Adapter<MyNotaRecycl
 
     @Override
     public int getItemCount() {
-        return mValues.size();
+//        return mValues.size();
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
         public final View mView;
         public final TextView mIdView;
         public final TextView mContentView;
-        public DummyItem mItem;
+        public Nota mItem;
 
         public ViewHolder(View view) {
             super(view);
