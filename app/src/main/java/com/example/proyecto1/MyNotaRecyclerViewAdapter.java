@@ -5,6 +5,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.List;
@@ -33,31 +34,46 @@ public class MyNotaRecyclerViewAdapter extends RecyclerView.Adapter<MyNotaRecycl
     @Override
     public void onBindViewHolder(final ViewHolder holder, int position) {
         holder.mItem = mValues.get(position);
-        holder.mIdView.setText(mValues.get(position).id);
-        holder.mContentView.setText(mValues.get(position).content);
+        holder.textViewTitulo.setText(holder.mItem.getTitulo());
+        holder.textViewContenido.setText(holder.mItem.getContenido());
+
+        if (holder.mItem.isFavorita()){
+            holder.ivFavorita.setImageResource(R.drawable.ic_baseline_star_24);
+        }else{
+            holder.ivFavorita.setImageResource(R.drawable.ic_baseline_star_border_24);
+        }
+
+        holder.ivFavorita.setOnClickListener(v ->   {
+            if (null != mListener)
+                {
+                    mListener.favoritaNotaClick(holder.mItem);
+                }
+        });
     }
 
     @Override
     public int getItemCount() {
-//        return mValues.size();
+        return mValues.size();
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
         public final View mView;
-        public final TextView mIdView;
-        public final TextView mContentView;
+        public final TextView textViewTitulo;
+        public final TextView textViewContenido;
+        public final ImageView ivFavorita;
         public Nota mItem;
 
         public ViewHolder(View view) {
             super(view);
             mView = view;
-            mIdView = (TextView) view.findViewById(R.id.item_number);
-            mContentView = (TextView) view.findViewById(R.id.content);
+            textViewTitulo = view.findViewById(R.id.textViewTitulo);
+            textViewContenido = view.findViewById(R.id.textViewContenido);
+            ivFavorita = view.findViewById(R.id.imageViewfavorita);
         }
 
         @Override
         public String toString() {
-            return super.toString() + " '" + mContentView.getText() + "'";
+            return super.toString() + " '" + textViewTitulo.getText() + "'";
         }
     }
 }

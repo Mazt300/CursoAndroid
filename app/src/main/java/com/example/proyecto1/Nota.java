@@ -1,24 +1,23 @@
 package com.example.proyecto1;
 
 public class Nota {
-    private String Nota;
+    private String Titulo;
     private String Contenido;
     private boolean Favorita;
     private int Color;
 
-    public Nota(String nota, String contenido, boolean favorita, int color) {
-        Nota = nota;
+    public Nota(String titulo, String contenido, boolean favorita, int color) {
+        Titulo = titulo;
         Contenido = contenido;
         Favorita = favorita;
         Color = color;
     }
-
-    public String getNota() {
-        return Nota;
+    public String getTitulo() {
+        return Titulo;
     }
 
-    public void setNota(String nota) {
-        Nota = nota;
+    public void setTitulo(String titulo) {
+        Titulo = titulo;
     }
 
     public String getContenido() {

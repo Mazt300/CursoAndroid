@@ -8,11 +8,13 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -23,7 +25,7 @@ public class NotaFragment extends Fragment {
     // TODO: Customize parameter argument names
     private static final String ARG_COLUMN_COUNT = "column-count";
     // TODO: Customize parameters
-    private int mColumnCount = 1;
+    private int mColumnCount = 2;
     private NotasInteractionListener mListener;
     private List<Nota> notaList;
     private  MyNotaRecyclerViewAdapter adapterNotas;
@@ -65,9 +67,14 @@ public class NotaFragment extends Fragment {
             if (mColumnCount <= 1) {
                 recyclerView.setLayoutManager(new LinearLayoutManager(context));
             } else {
-                recyclerView.setLayoutManager(new GridLayoutManager(context, mColumnCount));
+                recyclerView.setLayoutManager(new GridLayoutManager(context,mColumnCount));
             }
-            adapterNotas = new MyNotaRecyclerViewAdapter(notaList);
+            notaList = new ArrayList<>();
+            notaList.add(new Nota("Lista de la compra","Comprar pan tostado",true, android.R.color.holo_blue_light));
+            notaList.add(new Nota("Rocordar","Deje parqueado el carrro en la calle",false, android.R.color.holo_green_light));
+            notaList.add(new Nota("¿De dónde viene?","El trozo estándar de lorem ipsum utilizado desde el siglo XVI se reproduce a continuación para los interesados. Las secciones 1.10.32 y 1.10.33 de \"Extremes of Good and Evil\" de Cicerón también se reproducen en su forma original exacta, acompañadas de versiones en inglés de la traducción de 1914 de H. Rackham.",true, android.R.color.holo_orange_light));
+
+            adapterNotas = new MyNotaRecyclerViewAdapter(notaList,mListener);
             recyclerView.setAdapter(adapterNotas);
         }
         return view;
