@@ -1,8 +1,9 @@
-package com.example.proyecto1;
+package com.example.proyecto1.ui;
 
 import android.os.Bundle;
 import android.widget.Toast;
 
+import com.example.proyecto1.R;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -11,7 +12,8 @@ import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
-public class NotasActivity extends AppCompatActivity implements NotasInteractionListener {
+public class DashboardActivity extends AppCompatActivity{
+//        implements NotasInteractionListener
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,19 +29,19 @@ public class NotasActivity extends AppCompatActivity implements NotasInteraction
         NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
         NavigationUI.setupWithNavController(navView, navController);
     }
-
-    @Override
-    public void editNotaClieck(Nota nota) {
-
-    }
-
-    @Override
-    public void eliminarNotaClick(Nota nota) {
-
-    }
-
-    @Override
-    public void favoritaNotaClick(Nota nota) {
-
-    }
+//
+//    @Override
+//    public void editNotaClieck(Nota nota) {
+//
+//    }
+//
+//    @Override
+//    public void eliminarNotaClick(Nota nota) {
+//
+//    }
+//
+//    @Override
+//    public void favoritaNotaClick(Nota nota) {
+//
+//    }
 }

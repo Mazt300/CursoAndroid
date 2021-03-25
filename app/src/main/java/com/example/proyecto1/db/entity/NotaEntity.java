@@ -1,17 +1,35 @@
 package com.example.proyecto1;
 
-public class Nota {
-    private String Titulo;
-    private String Contenido;
-    private boolean Favorita;
-    private int Color;
+import androidx.room.ColumnInfo;
+import androidx.room.Entity;
+import androidx.room.PrimaryKey;
 
-    public Nota(String titulo, String contenido, boolean favorita, int color) {
+@Entity(tableName = "notas")
+public class NotaEntity {
+    @PrimaryKey(autoGenerate = true)
+    public int Id;
+
+//    @ColumnInfo(name = "")
+    public String Titulo;
+    public String Contenido;
+    public boolean Favorita;
+    public String Color;
+
+    public NotaEntity( String titulo, String contenido, boolean favorita, String color) {
         Titulo = titulo;
         Contenido = contenido;
         Favorita = favorita;
         Color = color;
     }
+
+    public int getId() {
+        return Id;
+    }
+
+    public void setId(int id) {
+        Id = id;
+    }
+
     public String getTitulo() {
         return Titulo;
     }
@@ -36,11 +54,11 @@ public class Nota {
         Favorita = favorita;
     }
 
-    public int getColor() {
+    public String getColor() {
         return Color;
     }
 
-    public void setColor(int color) {
+    public void setColor(String color) {
         Color = color;
     }
 }

@@ -1,12 +1,16 @@
-package com.example.proyecto1;
+package com.example.proyecto1.ui;
 
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.example.proyecto1.db.entity.NotaEntity;
+import com.example.proyecto1.R;
 
 import java.util.List;
 
@@ -16,12 +20,12 @@ import java.util.List;
  */
 public class MyNotaRecyclerViewAdapter extends RecyclerView.Adapter<MyNotaRecyclerViewAdapter.ViewHolder> {
 
-    private final List<Nota> mValues;
-    private final NotasInteractionListener mListener;
-
-    public MyNotaRecyclerViewAdapter(List<Nota> items, NotasInteractionListener listener) {
+    private final List<NotaEntity> mValues;
+//    private final NotasInteractionListener mListener;
+    private Context ctx;
+    public MyNotaRecyclerViewAdapter(List<NotaEntity> items, Context ctx) {
         mValues = items;
-        mListener = listener;
+        this.ctx = ctx;
     }
 
     @Override
@@ -43,11 +47,11 @@ public class MyNotaRecyclerViewAdapter extends RecyclerView.Adapter<MyNotaRecycl
             holder.ivFavorita.setImageResource(R.drawable.ic_baseline_star_border_24);
         }
 
-        holder.ivFavorita.setOnClickListener(v ->   {
-            if (null != mListener)
-                {
-                    mListener.favoritaNotaClick(holder.mItem);
-                }
+        holder.ivFavorita.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
         });
     }
 
@@ -61,7 +65,7 @@ public class MyNotaRecyclerViewAdapter extends RecyclerView.Adapter<MyNotaRecycl
         public final TextView textViewTitulo;
         public final TextView textViewContenido;
         public final ImageView ivFavorita;
-        public Nota mItem;
+        public NotaEntity mItem;
 
         public ViewHolder(View view) {
             super(view);
